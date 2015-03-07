@@ -1,0 +1,45 @@
+<% provide(:title, "更新") %>
+<h1 class="page-header">プロフィール更新</h1>
+
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1">
+    <%= form_for @user, html: { multipart: true } do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <div class="form-group">
+      <label class="control-label col-sm-4">お名前</label>
+      <div class="col-sm-8"><%= f.text_field :name %></div>
+      </div>
+
+      <div class="form-group">
+      <label class="control-label col-sm-4">メールアドレス</label>
+      <div class="col-sm-8"><%= f.text_field :email %></div>
+      </div>
+
+      <div class="form-group">
+      <label class="control-label col-sm-4">パスワード</label>
+      <div class="col-sm-8"><%= f.password_field :password %></div>
+      </div>
+
+      <div class="form-group">
+      <label class="control-label col-sm-4">パスワード（確認用)</label>
+      <div class="col-sm-8"><%= f.password_field :password_confirmation %></div>
+      </div>
+
+      <div class="form-group">
+      <label class="control-label col-sm-4">アバター画像</label>
+      <div class="col-sm-8">
+      <%= f.file_field :avatar %>
+      <%= f.hidden_field :avatar_cache %>
+      </div>
+
+      
+      <%= f.check_box :remove_avatar %>アバターを削除する</label>
+      
+
+
+
+      <%= f.submit "変更を保存する", class: "btn btn-large btn-primary btn-block well-lg" %>
+    <% end %>
+  </div>
+</div>

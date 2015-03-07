@@ -1,0 +1,44 @@
+<h1 class="page-header">プロフィールページ</h1>
+
+<!-- コンテンツ -->
+
+<div class="row">
+
+<!-- サイドバー -->
+
+  <aside class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <section>
+      <h4 class="restitle text-center">基本情報</h4>
+      <table class="table table-bordered">
+        <tr>
+          <td>プロフィール画像</td>
+          <td><%= image_tag(@user.avatar_url) if @user.avatar? %></td>
+        </tr>
+          <td>会員番号</td>
+          <td><%= @user.id %></td>
+        </tr>
+        <tr>
+          <td>お名前</td>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= @user.email %></td>
+        </tr>
+      </table>
+    </section>
+  </aside>
+
+<!-- /サイドバー -->
+
+<!-- メイン -->
+
+  <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+  	
+  </div>
+
+<!-- /メイン -->
+
+</div>
+
+<!-- /コンテンツ -->

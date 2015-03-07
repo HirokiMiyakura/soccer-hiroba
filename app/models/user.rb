@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }
   
   has_secure_password
+  #JSONではない、つまり複数の画像を配列として格納はできない
+  mount_uploader :avatar, AvatarUploader
 
   def User.new_remember_token
   	SecureRandom.urlsafe_base64
