@@ -1,10 +1,10 @@
 class StaticPagesController < ApplicationController
   def home
   	@articles = Article.all.limit(5)
-  	@germany = Article.where(topic: 'ブンデスリーガ')
-  	@england = Article.where(topic: 'プレミアリーグ')
-  	@spain = Article.where(topic: 'リーガエスパニョル')
-  	@italy = Article.where(topic: 'セリエA')
+  	@germany = Article.where(topic: 'ブンデスリーガ').limit(2)
+  	@england = Article.where(topic: 'プレミアリーグ').limit(2)
+  	@spain = Article.where(topic: 'リーガエスパニョル').limit(2)
+  	@italy = Article.where(topic: 'セリエA').limit(2)
 
   	@user = current_user
 
