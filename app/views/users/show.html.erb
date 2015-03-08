@@ -27,6 +27,9 @@
         </tr>
       </table>
     </section>
+    <section>
+      <%= render 'shared/stats' %>
+    </section>
   </aside>
 
 <!-- /サイドバー -->
@@ -34,7 +37,14 @@
 <!-- メイン -->
 
   <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-  	
+    <%= render 'follow_form' if signed_in? %>
+    <% if @user.articles.any? %>
+      <h3>Articles (<%= @user.articles.count %>)</h3>
+      <ol class="articless">
+        <%= render @articles %>
+      </ol>
+      <%= will_paginate @articles %>
+    <% end %>
   </div>
 
 <!-- /メイン -->

@@ -7,7 +7,13 @@ class User < ActiveRecord::Base
             uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6 }
 
-  has_many :articles
+  has_many :articles, dependent: :destroy
+  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_relationships, foreign_key: "followed_id",
+                                  class_name: "Relationship",
+                                  dependent: :destroy
+  has_many :followed_users, through: :relationships, source: :followed
+  has_many :followers, through: :reverse_relationships, source: :follower
   
   has_secure_password
   #JSONではない、つまり複数の画像を配列として格納はできない
@@ -19,6 +25,22 @@ class User < ActiveRecord::Base
 
   def User.encrypt(token)
   	Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  def following?(other_user)
+    relationships.find_by(followed_id: other_user.id)
+  end
+
+  def follow!(other_user)
+    relationships.create!(followed_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  def feed
+    Micropost.from_users_followed_by(self)
   end
 
   private
