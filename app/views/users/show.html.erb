@@ -13,23 +13,32 @@
         <tr>
           <td>プロフィール画像</td>
           <td><%= image_tag(@user.avatar_url) if @user.avatar? %></td>
-        </tr>
-          <td>会員番号</td>
-          <td><%= @user.id %></td>
-        </tr>
         <tr>
           <td>お名前</td>
           <td><%= @user.name %></td>
         </tr>
         <tr>
-          <td>メールアドレス</td>
-          <td><%= @user.email %></td>
+          <td>Following</td>
+          <td><a href="<%= following_user_path(@user) %>">
+                <strong id="following" class="stat">
+                  <%= @user.followed_users.count %>
+                </strong>
+              </a>
+          </td>
         </tr>
+        <tr>
+          <td>Followers</td>
+          <td><a href="<%= followers_user_path(@user) %>">
+                <strong id="followers" class="stat">
+                  <%= @user.followers.count %>
+                </strong>
+              </a>
+          </td>
       </table>
     </section>
-    <section>
+    <!--<section>
       <%= render 'shared/stats' %>
-    </section>
+    </section>-->
   </aside>
 
 <!-- /サイドバー -->
@@ -40,10 +49,24 @@
     <%= render 'follow_form' if signed_in? %>
     <% if @user.articles.any? %>
       <h3>Articles (<%= @user.articles.count %>)</h3>
-      <ol class="articless">
-        <%= render @articles %>
-      </ol>
+        <!--<%= render @articles %>-->
+        <table class="table table-striped">
+          <tr>
+            <th>Topic</th>
+            <th>Title</th>
+            <th>More</th>
+          </tr>
+          <% @articles.each do |a| %>
+          <tr>
+            <td><%= a.topic %></td>
+            <td><%= a.title %></td>
+            <td><%= link_to 'more', a %></td>
+          </tr>
+          <% end %>
+        </table>
       <%= will_paginate @articles %>
+    <% else %>
+      <h3>まだ投稿がありません</h3>
     <% end %>
   </div>
 

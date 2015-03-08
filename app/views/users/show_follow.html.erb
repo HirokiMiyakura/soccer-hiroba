@@ -1,16 +1,16 @@
 <div class="row">
-  <aside class="span4">
+  <aside class="col-sm-4">
     <section>
+      <%= image_tag @user.avatar if @user.avatar? %>
       <h1><%= @user.name %></h1>
       <span><%= link_to "view my profile", @user %></span>
       <span><b>Articles:</b> <%= @user.articles.count %></span>
     </section>
     <section>
       <%= render 'shared/stats' %>
-      
     </section>
   </aside>
-  <div class="span8">
+  <div class="col-sm-8">
     <h3><%= @title %></h3>
     <% if @users.any? %>
       <ul class="users">

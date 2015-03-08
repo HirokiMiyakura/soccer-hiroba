@@ -1,0 +1,26 @@
+<% provide(:title, "ログイン") %>
+<h1 class="page-headeer">ログイン</h1>
+
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+  	<%= form_for(:session, url: sessions_path) do |f| %>
+
+      <div class="form-group row">
+  	  <label class="control-label col-xs-12 col-lg-3">メールアドレス</label>
+  	  <div class="col-xs-12 col-lg-9"><%= f.text_field :email, size: 100 %></div>
+      </div>
+
+      <div class="form-group row">
+  	  <label class="control-label col-xs-12 col-lg-3">パスワード</label>
+  	  <div class="col-xs-12 col-lg-9"><%= f.password_field :password %></div>
+      </div>
+
+  	  <%= f.submit "ログイン", class: "btn btn-large btn-primary btn-block well-lg" %>
+  	<% end %>
+  </div>
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+    <h3>まだ登録していない？<%= link_to "新規登録する！", signup_path, class: "btn btn-success white pull-right" %>
+  </div>
+</div>
+</div>

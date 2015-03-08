@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="panel panel-default">
+    <h1 class="brand"><%= link_to "Soccer", root_path, id: "logo", class: "navbar-brand pull-left" %></h1>
+
+    <% if !signed_in? %>
+      <%= form_for(:session, url: sessions_path, html: { class: 'form-inline text-right' }) do |f| %>
+
+        <div class="form-group">
+        <label class="control-label sr-only">メールアドレス</label>
+        <%= f.text_field(:email, class: "form-control input-sm", placeholder: "メールアドレス") %>
+        </div>
+
+        <div class="form-group">
+        <label class="control-label sr-only">パスワード</label>
+        <%= f.password_field(:password, class: "form-control input-sm", placeholder: "パスワード") %>
+        </div>
+
+        <%= f.submit "ログイン", class: "btn btn-default" %>
+        <%= link_to "無料登録", signup_path, class: "btn btn-success" %>
+      <% end %>
+
+    
+    <% else %>
+
+      <nav>
+        <ul class="nav pull-right">
+          <li><%= link_to 'ユーザー一覧', users_path %></li>
+          <li id="fat-menu" class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              アカウント <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu left">
+              <li><%= link_to "プロフィール画面へ", current_user %></li>
+              <li><%= link_to "プロフィール設定画面へ", edit_user_path(current_user) %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to 'ログアウト', signout_path, method: "delete" %>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    <% end %>
+
+  </div>
+</div>

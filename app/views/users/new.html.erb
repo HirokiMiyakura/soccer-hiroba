@@ -5,32 +5,33 @@
     <%= form_for @user, html: {multipart:true} do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
-      <div class="form-group">
-      <label class="control-label col-sm-4">お名前</label>
-      <div class="col-sm-8"><%= f.text_field :name %></div>
+      <div class="form-group row">
+      <label class="control-label col-lg-3 col-xs-12">お名前</label>
+      <div class="col-lg-9 col-xs-12"><%= f.text_field :name %></div>
       </div>
 
-      <div class="form-group">
-      <label class="control-label col-sm-4">メールアドレス</label>
-      <div class="col-sm-8"><%= f.text_field :email %></div>
+      <div class="form-group row">
+      <label class="control-label col-lg-3 col-xs-12">メールアドレス</label>
+      <div class="col-lg-9 col-xs-12"><%= f.text_field :email %></div>
       </div>
 
-      <div class="form-group">
-      <label class="control-label col-sm-4">パスワード</label>
-      <div class="col-sm-8"><%= f.password_field :password %></div>
+      <div class="form-group row">
+      <label class="control-label col-lg-3 col-xs-12">パスワード</label>
+      <div class="col-lg-9 col-xs-12"><%= f.password_field :password %></div>
       </div>
 
-      <div class="form-group">
-      <label class="control-label col-sm-4">パスワード（確認用)</label>
-      <div class="col-sm-8"><%= f.password_field :password_confirmation %></div>
+      <div class="form-group row">
+      <label class="control-label col-lg-3 col-xs-12">パスワード（確認用)</label>
+      <div class="col-lg-9 col-xs-12"><%= f.password_field :password_confirmation %></div>
       </div>
 
-      <div class="form-group">
-      <label class="control-label col-sm-4">アバター画像</label>
-      <div class="col-sm-8">
-      <%= f.file_field :avatar %>
+      <div class="form-group row">
+      <label class="control-label col-lg-3 col-xs-12">アバター画像</label>
+      <div class="col-lg-9 col-xs-12"><%= f.file_field :avatar %>
       <%= f.hidden_field :avatar_cache %>
       </div>
+      </div>
+      <br /><br />
 
       <%= f.submit "アカウントを作成する", class: "btn btn-large btn-success btn-block well-lg" %>
     <% end %>

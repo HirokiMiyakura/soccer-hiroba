@@ -1,4 +1,10 @@
-<% @users.each do |u| %>
-  <%= u.name %>
-  <%= link_to '詳細', u %>
-<% end %>
+<h1>All users</h1>
+
+<ul class="users">
+  <% @users.each do |u| %>
+    <li>
+      <%= image_tag u.avatar_url if u.avatar? %>
+      <%= link_to u.name, u, class: 'pull-right' %>
+    </li>
+  <% end %>
+</ul>

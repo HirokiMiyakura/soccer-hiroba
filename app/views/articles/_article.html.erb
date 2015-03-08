@@ -1,6 +1,15 @@
-<li>
-  <span class="content"><%= article.body %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(article.created_at) %> ago.
-  </span>
-</li>
+<table class="table table-striped">
+  <caption>Posts</caption>
+    <tr>
+      <th>Topic</th>
+      <th>Title</th>
+      <th>More</th>
+    </tr>
+    <% @articles.each do |a| %>
+    <tr>
+      <td><%= a.topic %></td>
+      <td><%= a.title %></td>
+      <td><%= link_to 'more', a %></td>
+    </tr>
+    <% end %>
+</table>

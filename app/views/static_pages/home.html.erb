@@ -1,4 +1,111 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
-<%= link_to 'create a post', new_article_path %>
-<%= link_to 'all posts', articles_path %>
+<%= debug(@user.name) %>
+
+
+<%= link_to 'create a post', new_article_path, class: 'btn btn-success btn-large' %>
+<hr>
+
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table table-striped">
+      <caption>Latest Posts</caption>
+        <tr>
+          <th>Author</th>
+          <th>Topic</th>
+          <th>Title</th>
+          <th>More</th>
+        </tr>
+        <% @articles.each do |a| %>
+        <tr>
+          <td><%= link_to a.user.name, a.user %></td>
+          <td><%= a.topic %></td>
+          <td><%= a.title %></td>
+          <td><%= link_to 'more', a %></td>
+        </tr>
+        <% end %>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 col-lg-6">
+    <table class="table table-striped">
+      <caption>Germany Posts</caption>
+        <tr>
+          <th>Author</th>
+          <th>Topic</th>
+          <th>Title</th>
+          <th>More</th>
+        </tr>
+        <% @germany.each do |a| %>
+        <tr>
+          <td><%= link_to a.user.name, a.user %></td>
+          <td><%= a.topic %></td>
+          <td><%= a.title %></td>
+          <td><%= link_to 'more', a %></td>
+        </tr>
+        <% end %>
+    </table>
+  </div>
+
+  <div class="col-sm-12 col-lg-6">
+    <table class="table table-striped">
+      <caption>England Posts</caption>
+        <tr>
+          <th>Author</th>
+          <th>Topic</th>
+          <th>Title</th>
+          <th>More</th>
+        </tr>
+        <% @england.each do |a| %>
+        <tr>
+          <td><%= link_to a.user.name, a.user %></td>
+          <td><%= a.topic %></td>
+          <td><%= a.title %></td>
+          <td><%= link_to 'more', a %></td>
+        </tr>
+        <% end %>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 col-lg-6">
+    <table class="table table-striped">
+      <caption>Spain Posts</caption>
+        <tr>
+          <th>Author</th>
+          <th>Topic</th>
+          <th>Title</th>
+          <th>More</th>
+        </tr>
+        <% @spain.each do |a| %>
+        <tr>
+          <td><%= link_to a.user.name, a.user %></td>
+          <td><%= a.topic %></td>
+          <td><%= a.title %></td>
+          <td><%= link_to 'more', a %></td>
+        </tr>
+        <% end %>
+    </table>
+  </div>
+
+  <div class="col-sm-12 col-lg-6">
+    <table class="table table-striped">
+      <caption>Italy Posts</caption>
+        <tr>
+          <th>Author</th>
+          <th>Topic</th>
+          <th>Title</th>
+          <th>More</th>
+        </tr>
+        <% @italy.each do |a| %>
+        <tr>
+          <td><%= link_to a.user.name, a.user %></td>
+          <td><%= a.topic %></td>
+          <td><%= a.title %></td>
+          <td><%= link_to 'more', a %></td>
+        </tr>
+        <% end %>
+    </table>
+  </div>
+</div>
