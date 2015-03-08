@@ -1,0 +1,30 @@
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>投稿者：</strong>
+  <%= link_to current_user.name, @writer %>
+</p>
+
+<p>
+  <strong>タイトル：</strong>
+  <%= @article.title %>
+</p>
+
+<p>
+  <strong>トピック：</strong>
+  <%= @article.topic %>
+</p>
+
+<p>
+  <strong>本文：</strong>
+  <%= @article.body %>
+</p>
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<% if signed_in? %>
+  <% if @article.id == @user.id %>
+  <%= link_to 'Destroy', (@article), method: :delete, data: { confirm: 'Are you sure?' } %> |
+  <% end %>
+<% end %>
+<%= link_to 'Back', articles_path %>
