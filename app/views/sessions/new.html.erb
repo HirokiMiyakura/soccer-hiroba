@@ -15,12 +15,15 @@
   	  <div class="col-xs-12 col-lg-9"><%= f.password_field :password %></div>
       </div>
 
-  	  <%= f.submit "ログイン", class: "btn btn-large btn-primary btn-block well-lg" %>
+  	  <%= f.submit "ログイン", class: "btn btn-large btn-primary btn-block" %>
   	<% end %>
   </div>
+</div>
+
+<hr>
+
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2">
-    <h3>まだ登録していない？<%= link_to "新規登録する！", signup_path, class: "btn btn-success white pull-right" %>
+    <h4>まだ登録していない？</h4><%= link_to "新規登録する！", signup_path, class: "btn btn-default pull-right well-lg" %>
   </div>
-</div>
 </div>

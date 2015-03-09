@@ -1,18 +1,30 @@
-<% if signed_in? %>
+
+
 <div class="row">
   <div class="col-xs-12">
+    <% if @feed_items %>
     <h2>Your Following User's Articles ! </h2>
-    <% if @feed_items.any? %>
-      <ol class="microposts">
-      <%= render partial: 'shared/feed_item', collection: @feed_items %>
-      </ol>
-    <%= will_paginate @feed_items %>
+    <table class="table table-striped">
+      <tr>
+        <th>Author</th>
+        <th>Title</th>
+        <th>More</th>
+      </tr>
+      <% @feed_items.each do |f| %>
+      <tr>
+        <td><%= link_to f.user.name, f.user %></td>
+        <td><%= f.title %></td>
+        <td><%= link_to 'More', f %></td>
+      </tr>
+      <% end %>
+    </table>
+    <% else %>
+    <h2>Follow somebody, and Check them out !</h2>
     <% end %>
   </div>
 </div>
-<% end %>
 
-
+<hr>
 <%= link_to 'create a post', new_article_path, class: 'btn btn-success btn-large' %>
 <hr>
 
