@@ -21,6 +21,16 @@
   <%= @article.body %>
 </p>
 
+<div class="reputation">
+  <%= simple_format @article.body %>
+  <em>    
+      <%= @article.user.name %>
+      <%= pluralize @article.reputation_for(:votes).to_i, "vote" %>
+    | <%= link_to "up", vote_article_path(@article, type: "up"), method: "post" %>
+    | <%= link_to "down", vote_article_path(@article, type: "down"), method: "post" %>
+  </em>
+</div>
+
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <% if signed_in? %>
   <% if @article.id == @user.id %>

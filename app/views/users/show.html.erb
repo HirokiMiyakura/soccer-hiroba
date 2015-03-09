@@ -34,6 +34,11 @@
                 </strong>
               </a>
           </td>
+        </tr>
+        <tr>
+          <td>Sum of likes</td>
+          <td><%= current_user.reputation_for(:votes).to_i %></td>
+        </tr>
       </table>
     </section>
     <!--<section>

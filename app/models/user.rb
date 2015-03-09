@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
             uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6 }
 
+  has_many :evaluations, class_name: "ReputationSystem::Evaluation", as: :source
   has_many :articles, dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_relationships, foreign_key: "followed_id",
@@ -18,6 +19,8 @@ class User < ActiveRecord::Base
   has_secure_password
   #JSONではない、つまり複数の画像を配列として格納はできない
   mount_uploader :avatar, AvatarUploader
+
+  has_reputation :votes, source: {reputation: :votes, of: :articles}, aggregated_by: :sum
 
   def User.new_remember_token
   	SecureRandom.urlsafe_base64
@@ -41,6 +44,10 @@ class User < ActiveRecord::Base
 
   def feed
     Article.from_users_followed_by(self)
+  end
+
+  def liked?(article)
+    evaluations.where(target_type: article.class, reputation_name: :likes, target_id: article.id).present?
   end
 
   private

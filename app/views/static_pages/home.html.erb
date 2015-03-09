@@ -51,6 +51,28 @@
 </div>
 
 <div class="row">
+  <div class="col-sm-12">
+    <table class="table table-striped">
+      <caption>Top 5 popular</caption>
+        <tr>
+          <th>Author</th>
+          <th>Topic</th>
+          <th>Title</th>
+          <th>More</th>
+        </tr>
+        <% @rankings.each do |a| %>
+        <tr>
+          <td><%= link_to a.user.name, a.user %></td>
+          <td><%= a.topic %></td>
+          <td><%= a.title %></td>
+          <td><%= link_to 'more', a %></td>
+        </tr>
+        <% end %>
+    </table>
+  </div>
+</div>
+
+<div class="row">
   <div class="col-sm-12 col-lg-6">
     <table class="table table-striped">
       <caption>Germany Posts</caption>

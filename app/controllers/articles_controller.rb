@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :signed_in_user, only: [:new]
+  before_action :signed_in_user, only: [:new, :vote]
 
   def index
   	@articles = Article.all
@@ -25,11 +25,18 @@ class ArticlesController < ApplicationController
   	end
   end
 
+  def vote
+    value = params[:type] == "up" ? 1 : -1
+    @article = Article.find(params[:id])
+    @article.add_or_update_evaluation(:votes, value, current_user)
+    redirect_to :back, notice: "Thank you for voting!"
+  end
+
     private
 
       def article_params
         params.require(:article).permit(
-      	  :user_id, :title, :topic, :body
+      	  :user_id, :title, :topic, :body, :votes
         )
       end
 end

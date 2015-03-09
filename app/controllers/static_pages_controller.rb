@@ -8,6 +8,8 @@ class StaticPagesController < ApplicationController
 
   	@user = current_user
 
+    @rankings = Article.find_with_reputation(:votes, :all, order: 'votes desc').limit(5)
+
     if signed_in?
       @feed_items = current_user.feed.paginate(page: params[:page], per_page: 5)
     end

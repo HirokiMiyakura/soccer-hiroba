@@ -4,6 +4,8 @@ class Article < ActiveRecord::Base
   validates :body, presence: true
   validates :user_id, presence: true
 
+  has_reputation :votes, source: :user, aggregated_by: :sum
+
   def self.from_users_followed_by(user)
     followed_user_ids = "SELECT followed_id FROM relationships
                          WHERE follower_id = :user_id"
