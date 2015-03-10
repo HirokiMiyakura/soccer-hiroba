@@ -46,10 +46,6 @@ class User < ActiveRecord::Base
     Article.from_users_followed_by(self)
   end
 
-  def liked?(article)
-    evaluations.where(target_type: article.class, reputation_name: :likes, target_id: article.id).present?
-  end
-
   private
 
     def create_remember_token

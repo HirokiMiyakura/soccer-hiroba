@@ -3,7 +3,6 @@ class Article < ActiveRecord::Base
   #default_scope -> { order('created_at DESC') }
   validates :body, presence: true
   validates :user_id, presence: true
-
   has_reputation :votes, source: :user, aggregated_by: :sum
 
   def self.from_users_followed_by(user)
@@ -12,4 +11,5 @@ class Article < ActiveRecord::Base
     where("user_id IN (#{followed_user_ids})",
           user_id: user.id).limit(2)
   end
+
 end
