@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :signed_in_user, only: [:new, :vote]
 
   def index
-  	@articles = Article.all
+  	@articles = Article.all.paginate(page: params[:page], per_page: 20)
   end
 
   def new

@@ -1,6 +1,21 @@
-<% @articles.each do |a| %>
-  <%= a.user.name %>
-  <%= a.title %>
-  <%= a.topic %>
-  <%= a.body %>
-<% end %>
+<div class="row">
+  <div class="col-xs-12">
+    <h2>All Articles ! </h2>
+    <%= will_paginate @articles %>
+    <table class="table table-striped">
+      <tr>
+        <th>Author</th>
+        <th>Title</th>
+        <th>More</th>
+      </tr>
+      <% @articles.each do |f| %>
+      <tr>
+        <td><%= link_to f.user.name, f.user %></td>
+        <td><%= f.title %></td>
+        <td><%= link_to 'More', f %></td>
+      </tr>
+      <% end %>
+    </table>
+    <%= will_paginate @articles %>
+  </div>
+</div>
