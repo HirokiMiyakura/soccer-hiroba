@@ -313,6 +313,11 @@ input#user_avatar {
   line-height:15px;
 }
 
+textarea#comment_body  {
+  width: 100%!important;
+  height:100px!important;
+}
+
 @media (max-width: 768px) {
   h1.page-header {
     font-size:1.5em;

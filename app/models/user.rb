@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
                                   dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
   has_many :followers, through: :reverse_relationships, source: :follower
+  has_many :comments, dependent: :destroy
   
   has_secure_password
   #JSONではない、つまり複数の画像を配列として格納はできない

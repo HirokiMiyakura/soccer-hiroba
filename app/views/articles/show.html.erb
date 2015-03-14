@@ -1,4 +1,3 @@
-
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -38,3 +37,41 @@
   <% end %>
 <% end %>
 <%= link_to 'Back', articles_path %>
+
+<hr>
+
+<% if signed_in? %>
+<div class="row">
+  <div class="col-lg-10 col-lg-offset-1">
+  <%= form_for(@comment) do |f| %>
+    <div class="field">
+      <%= f.hidden_field :user_id, :value => @user.id %>
+    </div>
+
+    <div class="field">
+      <%= f.hidden_field :article_id, :value => current_article.id %>
+    </div>
+  
+    <div class="form-group">
+      <div class="row">
+      <label class="control-label col-sm-3 col-lg-3">コメント</label>
+      <div class="col-sm-8 col-lg-8"><%= f.text_area :body %></div>
+      </div>
+    </div>
+
+    <%= f.submit "コメントを送信する", class: "btn btn-large well-sm pull-right" %>
+   <% end %>
+  </div>
+</div>
+
+<% else %>
+  
+  <%= link_to 'コメントするために新規登録する', signup_path %>
+
+<% end %>
+
+<% if @comments.any? %>
+<% @comments.each do |c| %>
+<%= c.body %>
+<% end %>
+<% end %>

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :articles do
     member { post :vote }
   end
+  resources :comments
   resources :relationships, only: [ :create, :destroy ]
   root 'static_pages#home'
   match '/signup', to: 'users#new', via: 'get'

@@ -20,6 +20,14 @@ module SessionsHelper
   	@current_user ||= User.find_by(remember_token: remember_token)
   end
 
+  def current_article=(article)
+    @current_article = article
+  end
+
+  def current_article
+    @current_article ||= Article.find_by(id: params[:id])
+  end
+
   def current_user?(user)
     user == current_user
   end
