@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
   def create
   	@article = current_user.articles.build(article_params)
   	if @article.save
-  	  flash[:success] = "作成しました"
+  	  flash[:success] = "記事を投稿いたしました"
   	  redirect_to root_url
   	else
   	  render :new

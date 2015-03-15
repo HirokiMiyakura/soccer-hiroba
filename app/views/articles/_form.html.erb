@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-xs-12 col-lg-8 col-lg-offset-2">
+  <div class="col-sm-12">
 
 <%= form_for(@article) do |f| %>
   <% if @article.errors.any? %>
@@ -26,7 +26,7 @@
   <div class="form-group">
     <label class="control-label col-sm-3 col-lg-3">トピック</label>
     <div class="col-sm-8 col-lg-8">
-      <%= f.select :topic, ['プレミアリーグ','ブンデスリーガ','リーガエスパニョル','セリエA','Jリーグ'], class: 'topic' %>
+      <%= f.select :topic, ['プレミアリーグ','ブンデスリーガ','リーガエスパニョル','セリエA','Jリーグ','日本代表'], class: 'topic' %>
     </div>
   </div>
 
@@ -35,7 +35,7 @@
     <div class="col-sm-8 col-lg-8"><%= f.text_area :body %></div>
   </div>
   <br>
-  <%= f.submit "記事を投稿する", class: "btn btn-large btn-success well-sm pull-center white" %>
+  <%= f.submit "記事を投稿する", class: "btn btn-large btn-success well-lg pull-right" %>
 
 <% end %>
 </div>

@@ -1,10 +1,16 @@
-<h1>All users</h1>
+<h1 class="page-header">ユーザー一覧</h1>
 
-<ul class="users">
-  <% @users.each do |u| %>
-    <li>
-      <%= image_tag u.avatar_url if u.avatar? %>
-      <%= link_to u.name, u, class: 'pull-right' %>
-    </li>
-  <% end %>
-</ul>
+<table class="table table-striped">
+	<tr>
+		<th>ユーザー名</th>
+		<th>記事数</th>
+		<th>いいね獲得数</th>
+	</tr>
+	<% @users.each do |u| %>
+	<tr>
+		<td><%= link_to u.name, u %></td>
+		<td><%= u.articles.count %></td>
+		<td><%= u.reputation_for(:votes).to_i %></td>
+	</tr>
+	<% end %>
+</table>

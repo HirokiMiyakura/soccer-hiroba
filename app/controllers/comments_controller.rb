@@ -6,7 +6,9 @@ class CommentsController < ApplicationController
 
   def create
   	@comment = Comment.new(comment_params)
-  	@comment.save
+  	if @comment.save
+      flash[:success] = "コメントを投稿いたしました"
+    end
   	redirect_to :back
   end
 

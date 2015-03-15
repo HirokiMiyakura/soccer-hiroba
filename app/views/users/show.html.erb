@@ -18,7 +18,7 @@
           <td><%= @user.name %></td>
         </tr>
         <tr>
-          <td>Following</td>
+          <td>フォロー</td>
           <td><a href="<%= following_user_path(@user) %>">
                 <strong id="following" class="stat">
                   <%= @user.followed_users.count %>
@@ -27,7 +27,7 @@
           </td>
         </tr>
         <tr>
-          <td>Followers</td>
+          <td>フォロワー</td>
           <td><a href="<%= followers_user_path(@user) %>">
                 <strong id="followers" class="stat">
                   <%= @user.followers.count %>
@@ -36,7 +36,7 @@
           </td>
         </tr>
         <tr>
-          <td>Sum of likes</td>
+          <td>いいね獲得数</td>
           <td><%= current_user.reputation_for(:votes).to_i %></td>
         </tr>
       </table>
@@ -57,21 +57,21 @@
         <!--<%= render @articles %>-->
         <table class="table table-striped">
           <tr>
-            <th>Topic</th>
-            <th>Title</th>
-            <th>More</th>
+            <th>トピック</th>
+            <th>タイトル</th>
+            <th>詳細</th>
           </tr>
           <% @articles.each do |a| %>
           <tr>
             <td><%= a.topic %></td>
             <td><%= a.title %></td>
-            <td><%= link_to 'more', a %></td>
+            <td><%= link_to '本文へ', a %></td>
           </tr>
           <% end %>
         </table>
       <%= will_paginate @articles %>
     <% else %>
-      <h3>まだ投稿がありません</h3>
+      <h3>まだ投稿がありません。</h3>
     <% end %>
   </div>
 

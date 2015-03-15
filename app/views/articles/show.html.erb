@@ -20,15 +20,19 @@
   <%= @article.body %>
 </p>
 
-<div class="reputation">
-  <%= simple_format @article.body %>
+<hr>
+
+<div class="reputation" style="text-align:right;">
   <em>    
-      <%= @article.user.name %>
-      <%= pluralize @article.reputation_for(:votes).to_i, "vote" %>
-    | <%= link_to "up", vote_article_path(@article, type: "up"), method: "post" %>
-    | <%= link_to "down", vote_article_path(@article, type: "down"), method: "post" %>
+      <!--<%= @article.user.name %>-->
+      <h3 class="brand">この記事を評価しよう</h3>
+      <%= pluralize @article.reputation_for(:votes).to_i, "いいね！" %>
+      <%= link_to "いいね！", vote_article_path(@article, type: "up"), method: "post", class: 'btn btn-success well-lg' %>
+      <%= link_to "う〜ん", vote_article_path(@article, type: "down"), method: "post", class: 'btn btn-alert well-lg' %>
   </em>
 </div>
+
+<hr>
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <% if signed_in? %>
@@ -70,8 +74,24 @@
 
 <% end %>
 
+<hr>
+
 <% if @comments.any? %>
-<% @comments.each do |c| %>
-<%= c.body %>
-<% end %>
+
+<h3 class="brand">コメント一覧</h3>
+
+<hr>
+
+<table class="table table-striped">
+  <tr>
+    <th>ユーザー</th>
+    <th>コメント</th>
+  </tr>
+  <% @comments.each do |c| %>
+  <tr>
+    <td><%= link_to c.user.name, c.user %></td>
+    <td><%= c.body %></td>
+  </tr>
+  <% end %>
+</table>
 <% end %>

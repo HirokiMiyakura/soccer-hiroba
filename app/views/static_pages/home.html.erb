@@ -1,47 +1,47 @@
 <div class="row">
   <div class="col-xs-12">
     <% if @feed_items %>
-    <h2>Your Following User's Articles ! </h2>
+    <h2>フォローしているユーザーの投稿</h2>
     <table class="table table-striped">
       <tr>
-        <th>Author</th>
-        <th>Title</th>
-        <th>More</th>
+        <th>ユーザー</th>
+        <th>タイトル</th>
+        <th>詳細へ</th>
       </tr>
       <% @feed_items.each do |f| %>
       <tr>
         <td><%= link_to f.user.name, f.user %></td>
         <td><%= f.title %></td>
-        <td><%= link_to 'More', f %></td>
+        <td><%= link_to '本文へ', f %></td>
       </tr>
       <% end %>
     </table>
     <% else %>
-    <h2>Follow somebody, and Check them out !</h2>
+    <h2>気になるユーザーをフォローしてみよう！</h2>
     <% end %>
   </div>
 </div>
 
 <hr>
-<%= link_to 'create a post', new_article_path, class: 'btn btn-success btn-large' %>
+<%= link_to '記事を投稿する', new_article_path, class: 'btn btn-success btn-large' %>
 <hr>
 
 <div class="row">
   <div class="col-sm-12">
     <table class="table table-striped">
-      <caption>Latest Posts</caption>
+      <caption>最新記事</caption>
         <tr>
-          <th>Author</th>
-          <th>Topic</th>
-          <th>Title</th>
-          <th>More</th>
+          <th>ユーザー</th>
+          <th>トピック</th>
+          <th>タイトル</th>
+          <th>詳細</th>
         </tr>
         <% @articles.each do |a| %>
         <tr>
           <td><%= link_to a.user.name, a.user %></td>
           <td><%= a.topic %></td>
           <td><%= a.title %></td>
-          <td><%= link_to 'more', a %></td>
+          <td><%= link_to '本文へ', a %></td>
         </tr>
         <% end %>
     </table>
@@ -51,19 +51,19 @@
 <div class="row">
   <div class="col-sm-12">
     <table class="table table-striped">
-      <caption>Top 5 popular</caption>
+      <caption>HOT 5</caption>
         <tr>
-          <th>Author</th>
-          <th>Topic</th>
-          <th>Title</th>
-          <th>More</th>
+          <th>ユーザー</th>
+          <th>トピック</th>
+          <th>タイトル</th>
+          <th>詳細</th>
         </tr>
         <% @rankings.each do |a| %>
         <tr>
           <td><%= link_to a.user.name, a.user %></td>
           <td><%= a.topic %></td>
           <td><%= a.title %></td>
-          <td><%= link_to 'more', a %></td>
+          <td><%= link_to '本文へ', a %></td>
         </tr>
         <% end %>
     </table>
@@ -73,19 +73,19 @@
 <div class="row">
   <div class="col-sm-12 col-lg-6">
     <table class="table table-striped">
-      <caption>Germany Posts</caption>
+      <caption>ブンデスリーガ</caption>
         <tr>
-          <th>Author</th>
-          <th>Topic</th>
-          <th>Title</th>
-          <th>More</th>
+          <th>ユーザー</th>
+          <th>トピック</th>
+          <th>タイトル</th>
+          <th>詳細</th>
         </tr>
         <% @germany.each do |a| %>
         <tr>
           <td><%= link_to a.user.name, a.user %></td>
           <td><%= a.topic %></td>
           <td><%= a.title %></td>
-          <td><%= link_to 'more', a %></td>
+          <td><%= link_to '本文へ', a %></td>
         </tr>
         <% end %>
     </table>
@@ -93,19 +93,19 @@
 
   <div class="col-sm-12 col-lg-6">
     <table class="table table-striped">
-      <caption>England Posts</caption>
+      <caption>プレミアリーグ</caption>
         <tr>
-          <th>Author</th>
-          <th>Topic</th>
-          <th>Title</th>
-          <th>More</th>
+          <th>ユーザー</th>
+          <th>トピック</th>
+          <th>タイトル</th>
+          <th>詳細</th>
         </tr>
         <% @england.each do |a| %>
         <tr>
           <td><%= link_to a.user.name, a.user %></td>
           <td><%= a.topic %></td>
           <td><%= a.title %></td>
-          <td><%= link_to 'more', a %></td>
+          <td><%= link_to '本文へ', a %></td>
         </tr>
         <% end %>
     </table>
@@ -115,19 +115,19 @@
 <div class="row">
   <div class="col-sm-12 col-lg-6">
     <table class="table table-striped">
-      <caption>Spain Posts</caption>
+      <caption>リーガエスパニョル</caption>
         <tr>
-          <th>Author</th>
-          <th>Topic</th>
-          <th>Title</th>
-          <th>More</th>
+          <th>ユーザー</th>
+          <th>トピック</th>
+          <th>タイトル</th>
+          <th>詳細</th>
         </tr>
         <% @spain.each do |a| %>
         <tr>
           <td><%= link_to a.user.name, a.user %></td>
           <td><%= a.topic %></td>
           <td><%= a.title %></td>
-          <td><%= link_to 'more', a %></td>
+          <td><%= link_to '本文へ', a %></td>
         </tr>
         <% end %>
     </table>
@@ -135,19 +135,61 @@
 
   <div class="col-sm-12 col-lg-6">
     <table class="table table-striped">
-      <caption>Italy Posts</caption>
+      <caption>セリエA</caption>
         <tr>
-          <th>Author</th>
-          <th>Topic</th>
-          <th>Title</th>
-          <th>More</th>
+          <th>ユーザー</th>
+          <th>トピック</th>
+          <th>タイトル</th>
+          <th>詳細</th>
         </tr>
         <% @italy.each do |a| %>
         <tr>
           <td><%= link_to a.user.name, a.user %></td>
           <td><%= a.topic %></td>
           <td><%= a.title %></td>
-          <td><%= link_to 'more', a %></td>
+          <td><%= link_to '本文へ', a %></td>
+        </tr>
+        <% end %>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 col-lg-6">
+    <table class="table table-striped">
+      <caption>Jリーグ</caption>
+        <tr>
+          <th>ユーザー</th>
+          <th>トピック</th>
+          <th>タイトル</th>
+          <th>詳細</th>
+        </tr>
+        <% @japan.each do |a| %>
+        <tr>
+          <td><%= link_to a.user.name, a.user %></td>
+          <td><%= a.topic %></td>
+          <td><%= a.title %></td>
+          <td><%= link_to '本文へ', a %></td>
+        </tr>
+        <% end %>
+    </table>
+  </div>
+
+  <div class="col-sm-12 col-lg-6">
+    <table class="table table-striped">
+      <caption>日本代表</caption>
+        <tr>
+          <th>ユーザー</th>
+          <th>トピック</th>
+          <th>タイトル</th>
+          <th>詳細</th>
+        </tr>
+        <% @national.each do |a| %>
+        <tr>
+          <td><%= link_to a.user.name, a.user %></td>
+          <td><%= a.topic %></td>
+          <td><%= a.title %></td>
+          <td><%= link_to '本文へ', a %></td>
         </tr>
         <% end %>
     </table>

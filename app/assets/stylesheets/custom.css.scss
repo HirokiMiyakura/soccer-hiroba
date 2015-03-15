@@ -263,19 +263,25 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 
 
 /***   オリジナル   ***/
-.hero-unit {
-}
-
-h1.midashi {
-  color: gray;
-  font-family: sans-serif;
-}
-
-h2.features {
+label.control-label.col-lg-3.col-xs-12 {
+  font-weight: bold;
 }
 
 label.control-label.col-sm-4 {
   line-height: 3em;
+}
+
+input#user_remove_avatar {
+  margin:15px;
+}
+
+textarea#article_body {
+  height: 400px!important;
+}
+
+label.control-label.col-sm-3.col-lg-3 {
+  font-weight: bold;
+  padding-top: 5px;
 }
 
 
