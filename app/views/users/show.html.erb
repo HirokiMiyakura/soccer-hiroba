@@ -8,11 +8,15 @@
 
   <aside class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
     <section>
-      <h4 class="restitle text-center">基本情報</h4>
-      <table class="table table-bordered">
-        <tr>
-          <td>プロフィール画像</td>
-          <td><%= image_tag(@user.avatar_url) if @user.avatar? %></td>
+      <h4 class="brand">基本情報</h4>
+      <% if @user.avatar? %>
+      <p>アバター画像</p>
+      <%= image_tag(@user.avatar_url) if @user.avatar? %>
+      <hr>
+      <% else %>
+      <p>アバター画像がまだ設定されていません</p>
+      <% end %>
+      <table class="table table-bordered profile">
         <tr>
           <td>お名前</td>
           <td><%= @user.name %></td>
