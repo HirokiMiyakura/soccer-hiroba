@@ -8,6 +8,12 @@
   box-sizing: border-box;
 }
 
+/* justify */
+
+.mt30 {
+  margin-top: 30px;
+}
+
 /* universal */
 
 html {
@@ -60,6 +66,11 @@ p {
   line-height: 1.7em;
 }
 
+.navbar-inverse .brand, .navbar-inverse .nav > li > a {
+  color: #333!important;
+  font-weight: bold!important;
+}
+
 
 /* header */
 
@@ -67,7 +78,7 @@ p {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: #fff;
+  color: #444;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
@@ -81,7 +92,9 @@ p {
 
 .navbar-inverse .navbar-inner {
   background-image: none!important;
-  border: none;
+  border: none!important;
+  padding: 20px 0 20px 0!important;
+  background-color: #f9f9f9!important;
 }
 
 .navbar-inverse .brand, .navbar-inverse .nav > li > a {
