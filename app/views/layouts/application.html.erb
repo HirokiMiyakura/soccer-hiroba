@@ -17,17 +17,43 @@
 </script>
 </head>
 <body>
+
+<!-- ヘッダー -->
 <%= render 'layouts/header' %>
+<!-- /ヘッダー -->
+
+<!-- アラート用コンテナー -->
 <div class="container mt30">
-  <div class="col-sm-12">
-    <% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %>"><%= value %></div>
-    <% end %>
+  <div class="row">
+    <div class="col-sm-12">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+    </div>
   </div>
 </div>
+<!-- /アラート用コンテナー -->
+
+<!-- コンテナ -->
 <div class="container-fluid">
-<%= yield %>
-</div>
+  <div class="row mt30">
+  <!-- ここからコンテンツ -->
+  <!-- ここからメイン(左サイド) -->
+  <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+    <%= yield %>
+  </div>
+  <!-- ここまでメイン(左サイド) -->
+
+  <!--　ここからサイド -->
+  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+  <%= render 'layouts/side' %>
+  </div>
+  <!-- /ここまでサイド -->
+
+  </div>
+</div>  
+<!-- /コンテナ -->
+
 <div class="container">
 <%= render 'layouts/footer' %>
 </div>
