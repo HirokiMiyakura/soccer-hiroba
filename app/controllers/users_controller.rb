@@ -31,8 +31,6 @@ class UsersController < ApplicationController
     @japan = Article.where(topic: 'Jリーグ').limit(2)
     @national = Article.where(topic: '日本代表').limit(2)
 
-    @user = current_user
-
     @rankings = Article.popular.limit(5)
   end
 
