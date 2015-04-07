@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
-  	@articles = Article.all.order(created_at: :desc).limit(5)
+  	@latestarticles = Article.all.order(created_at: :desc).limit(5)
   	@germany = Article.where(topic: 'ブンデスリーガ').limit(2)
   	@england = Article.where(topic: 'プレミアリーグ').limit(2)
   	@spain = Article.where(topic: 'リーガエスパニョル').limit(2)

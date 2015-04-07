@@ -1,12 +1,6 @@
 <h1 class="page-header">プロフィールページ</h1>
 
-<!-- コンテンツ -->
-
-<div class="row">
-
-<!-- サイドバー -->
-
-  <aside class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
     <section>
       <h4 class="brand">基本情報</h4>
       <% if @user.avatar? %>
@@ -48,13 +42,7 @@
     <!--<section>
       <%= render 'shared/stats' %>
     </section>-->
-  </aside>
 
-<!-- /サイドバー -->
-
-<!-- メイン -->
-
-  <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
     <%= render 'follow_form' if signed_in? %>
     <% if @user.articles.any? %>
       <h3>Articles (<%= @user.articles.count %>)</h3>
@@ -77,10 +65,35 @@
     <% else %>
       <h3>まだ投稿がありません。</h3>
     <% end %>
-  </div>
-
-<!-- /メイン -->
-
 </div>
-
-<!-- /コンテンツ -->
+<!--　ここからサイド -->
+<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+<table class="table table-striped">
+  <h4 class="brand">人気記事 Popular Articles</h4>
+  <tr>
+    <th>ユーザー</th>
+    <th>タイトル</th>
+  </tr>
+  <% @rankings.each do |a| %>
+  <tr>
+    <td><%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
+    <td><%= link_to a.title, a %></td>
+  </tr>
+  <% end %>
+</table>
+<table class="table table-striped">
+  <h4 class="brand">最新記事 New Articles</h4>
+  <tr>
+    <th>ユーザー</th>
+    <th>タイトル</th>
+  </tr>
+  <% @latestarticles.each do |a| %>
+  <tr>
+    <td><%= link_to a.user.name, a.user %><br />
+      <%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
+    <td><%= link_to a.title, a %></td>
+  </tr>
+  <% end %>
+</table>
+</div>  
+<!-- /ここまでサイド -->

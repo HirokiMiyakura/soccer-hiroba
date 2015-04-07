@@ -1,6 +1,3 @@
-<div class="row">
-  <div class="col-sm-12">
-
 <%= form_for(@article) do |f| %>
   <% if @article.errors.any? %>
     <div id="error_explanation">
@@ -38,5 +35,3 @@
   <%= f.submit "記事を投稿する", class: "btn btn-large btn-success well-lg pull-right" %>
 
 <% end %>
-</div>
-</div>
