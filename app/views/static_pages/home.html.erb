@@ -35,13 +35,14 @@
       <h4 class="brand">最新記事</h4>
         <tr>
           <th>ユーザー</th>
+          <th>アバター</th>
           <th>トピック</th>
           <th>タイトル</th>
         </tr>
         <% @latestarticles.each do |a| %>
         <tr>
-          <td><%= link_to a.user.name, a.user %><br />
-          <%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
+          <td><%= link_to a.user.name, a.user %></td>
+          <td><%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
           <td><%= a.topic %></td>
           <td><%= link_to a.title, a %></td>
         </tr>
@@ -61,7 +62,8 @@
         </tr>
         <% @rankings.each do |a| %>
         <tr>
-          <td><%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
+          <td><%= link_to a.user.name, a.user %><br />
+            <%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
           <td><%= a.topic %></td>
           <td><%= link_to a.title, a %></td>
         </tr>
@@ -80,7 +82,8 @@
         </tr>
         <% @germany.each do |a| %>
         <tr>
-          <td><%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
+          <td><%= link_to a.user.name, a.user %><br />
+            <%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
           <td><%= link_to a.title, a %></td>
         </tr>
         <% end %>
@@ -96,7 +99,8 @@
         </tr>
         <% @england.each do |a| %>
         <tr>
-          <td><%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
+          <td><%= link_to a.user.name, a.user %><br />
+            <%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
           <td><%= link_to a.title, a %></td>
         </tr>
         <% end %>
@@ -114,7 +118,8 @@
         </tr>
         <% @spain.each do |a| %>
         <tr>
-          <td><%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
+          <td><%= link_to a.user.name, a.user %><br />
+            <%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
           <td><%= link_to a.title, a %></td>
         </tr>
         <% end %>
@@ -130,7 +135,8 @@
         </tr>
         <% @italy.each do |a| %>
         <tr>
-          <td><%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
+          <td><%= link_to a.user.name, a.user %><br />
+            <%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
           <td><%= link_to a.title, a %></td>
         </tr>
         <% end %>
@@ -148,7 +154,8 @@
         </tr>
         <% @japan.each do |a| %>
         <tr>
-          <td><%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
+          <td><%= link_to a.user.name, a.user %><br />
+            <%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
           <td><%= link_to a.title, a %></td>
         </tr>
         <% end %>
@@ -164,7 +171,8 @@
         </tr>
         <% @national.each do |a| %>
         <tr>
-          <td><%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
+          <td><%= link_to a.user.name, a.user %><br />
+            <%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
           <td><%= link_to a.title, a %></td>
         </tr>
         <% end %>
@@ -174,6 +182,9 @@
 </div>
 <!--　ここからサイド -->
 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+  
+  <a href="http://soccerlture.com" target="_blank" /><%= image_tag 'soccerlture_banner.png' %></a>
+
 <table class="table table-striped">
   <h4 class="brand">人気記事 Popular Articles</h4>
   <tr>
@@ -182,7 +193,9 @@
   </tr>
   <% @rankings.each do |a| %>
   <tr>
-    <td><%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
+    <td>
+      <%= link_to a.user.name, a.user %><br />
+      <%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
     <td><%= link_to a.title, a %></td>
   </tr>
   <% end %>
@@ -201,5 +214,8 @@
   </tr>
   <% end %>
 </table>
+
+  
+
 </div>  
 <!-- /ここまでサイド -->

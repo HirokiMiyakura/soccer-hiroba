@@ -93,7 +93,7 @@ p {
 .navbar-inverse .navbar-inner {
   background-image: none!important;
   border: none!important;
-  padding: 20px 0 20px 0!important;
+  padding: 7px 0 7px 0!important;
   background-color: #f9f9f9!important;
 }
 
@@ -276,6 +276,11 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 
 
 /***   オリジナル   ***/
+
+header.navbar.navbar-fixed-top.navbar-inverse {
+  border-top: 3px solid #5bb65b;
+}
+
 label.control-label.col-lg-3.col-xs-12 {
   font-weight: bold;
 }
@@ -315,10 +320,6 @@ h4.restitle {
   font-size: 1.2em;
   font-weight: bold;
   color: gray;
-}
-.table th, .table td {
-  font-size: 0.9em;
-  font-weight: bold;
 }
 
 .dropdown-menu.left {
