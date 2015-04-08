@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-xs-12">
+      <% if signed_in? %>
+        <div class="profile">
+          <h4 class="brand">ようこそ <%= @user.name %>さん</h4>
+        <% if @user.avatar %>
+          <%= image_tag(@user.avatar, width: 170, height: 170, class: 'profile-image') %>
+        <% else %>
+          <%= image_tag 'no-image.png', width: 150, height: 150, class: 'profile-image' %>
+        <% end %>
+      
+        <table class="table table-striped profile">
+          <tr>
+            <td>お名前</td>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <td>フォロー</td>
+            <td><a href="<%= following_user_path(@user) %>">
+                <strong id="following" class="stat">
+                  <%= @user.followed_users.count %>
+                </strong>
+                </a>
+            </td>
+          </tr>
+          <tr>
+            <td>フォロワー</td>
+            <td><a href="<%= followers_user_path(@user) %>">
+                <strong id="followers" class="stat">
+                  <%= @user.followers.count %>
+                </strong>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>いいね獲得数</td>
+            <td><%= @user.reputation_for(:votes).to_i %></td>
+          </tr>
+        </table> 
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <h4 class="brand">SOCCER HIROBAの楽しみ方</h4>
+    </div>
+  </div>

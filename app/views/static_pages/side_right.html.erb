@@ -1,0 +1,29 @@
+<a href="http://soccerlture.com" target="_blank" /><%= image_tag 'soccerlture_banner.png' %></a>
+
+<table class="table table-striped">
+  <h4 class="brand">人気記事 Popular Articles</h4>
+  <tr>
+    <th>ユーザー</th>
+    <th>タイトル</th>
+  </tr>
+  <% @rankings.each do |a| %>
+  <tr>
+    <td>
+      <%= link_to a.user.name, a.user %></td>
+    <td><%= link_to a.title, a %></td>
+  </tr>
+  <% end %>
+</table>
+<table class="table table-striped">
+  <h4 class="brand">最新記事 New Articles</h4>
+  <tr>
+    <th>ユーザー</th>
+    <th>タイトル</th>
+  </tr>
+  <% @latestarticles.each do |a| %>
+  <tr>
+    <td><%= link_to a.user.name, a.user %></td>
+    <td><%= link_to a.title, a %></td>
+  </tr>
+  <% end %>
+</table>

@@ -36,11 +36,22 @@
 
 <!-- コンテナ -->
 <div class="container-fluid">
-  <div class="row mt30">
-  <!-- ここからコンテンツ -->
-  <!-- ここからメイン(左サイド) -->
-    <%= yield %>
-  <!-- ここまでメイン(左サイド) -->
+  <div class="row">
+    <!-- 左サイド -->
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+      <%= render template: 'static_pages/side_left' %>
+    </div>
+    <!-- /左サイド -->
+    <!-- 中央 -->
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <%= yield %>
+    </div>
+    <!-- /中央 -->
+    <!-- 右サイド -->
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+      <%= render template: 'static_pages/side_right' %>
+    </div>
+    <!-- /右サイド -->
 
   </div>
 </div>  

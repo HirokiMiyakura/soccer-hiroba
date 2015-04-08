@@ -1,112 +1,116 @@
-<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-<div class="row">
-  <div class="col-xs-12">
-    <% if @feed_items %>
-    <h4 class="brand">フォローしているユーザーの投稿</h4>
-    <table class="table table-striped">
-      <tr>
-        <th>ユーザー</th>
-        <th>タイトル</th>
-      </tr>
-      <% @feed_items.each do |f| %>
-      <tr>
-        <td><%= link_to f.user.name, f.user %></td>
-        <td><%= link_to f.title, f %></td>
-      </tr>
+<!-- 左サイド -->
+<% content_for :left_menu do %>
+  <div class="row">
+    <div class="col-xs-12">
+      <% if signed_in? %>
+        <div class="profile">
+          <h4 class="brand">ようこそ <%= @user.name %>さん</h4>
+        <% if @user.avatar %>
+          <%= image_tag(@user.avatar, width: 170, height: 170, class: 'profile-image') %>
+        <% else %>
+          <%= image_tag 'no-image.png', width: 150, height: 150, class: 'profile-image' %>
+        <% end %>
+      
+        <table class="table table-striped profile">
+          <tr>
+            <td>お名前</td>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <td>フォロー</td>
+            <td><a href="<%= following_user_path(@user) %>">
+                <strong id="following" class="stat">
+                  <%= @user.followed_users.count %>
+                </strong>
+                </a>
+            </td>
+          </tr>
+          <tr>
+            <td>フォロワー</td>
+            <td><a href="<%= followers_user_path(@user) %>">
+                <strong id="followers" class="stat">
+                  <%= @user.followers.count %>
+                </strong>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>いいね獲得数</td>
+            <td><%= @user.reputation_for(:votes).to_i %></td>
+          </tr>
+        </table> 
+        </div>
       <% end %>
-    </table>
-    <% else %>
-    <h2>気になるユーザーをフォローして記事をチェック！</h2>
-    <% end %>
+    </div>
   </div>
-</div>
 
-<hr>
-<div class="row">
-  <div class="col-xs-12">
-    <%= link_to '記事を投稿する', new_article_path, class: 'btn btn-success btn-large' %>
+  <div class="row">
+    <div class="col-sm-12">
+      <h4 class="brand">SOCCER HIROBAの楽しみ方</h4>
+    </div>
   </div>
-</div>
-<hr>
+<% end %>
+<!-- /左サイド -->
 
-<div class="row">
-  <div class="col-sm-12">
-    <table class="table table-striped">
-      <h4 class="brand">最新記事</h4>
-        <tr>
-          <th>ユーザー</th>
-          <th>アバター</th>
-          <th>トピック</th>
-          <th>タイトル</th>
-        </tr>
-        <% @latestarticles.each do |a| %>
-        <tr>
-          <td><%= link_to a.user.name, a.user %></td>
-          <td><%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
-          <td><%= a.topic %></td>
-          <td><%= link_to a.title, a %></td>
-        </tr>
-        <% end %>
-    </table>
-  </div>
-</div>
+<!-- ここから中央 -->
+  <h4 class="title">投稿しよう！</h4>
+  <%= link_to '記事を投稿する', new_article_path, class: 'btn' %>
 
-<div class="row">
-  <div class="col-sm-12">
-    <table class="table table-striped">
-      <h4 class="brand">HOT 5</h4>
-        <tr>
-          <th>ユーザー</th>
-          <th>トピック</th>
-          <th>タイトル</th>
-        </tr>
-        <% @rankings.each do |a| %>
-        <tr>
-          <td><%= link_to a.user.name, a.user %><br />
-            <%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
-          <td><%= a.topic %></td>
-          <td><%= link_to a.title, a %></td>
-        </tr>
-        <% end %>
-    </table>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-12 col-lg-6">
-    <table class="table table-striped">
-      <h4 class="brand">ブンデスリーガ</h4>
+  <div class="row">
+    <div class="col-xs-12">
+      <% if @feed_items %>
+        <h4 class="brand">フォローしているユーザーの投稿</h4>
+      <table class="table table-striped">
         <tr>
           <th>ユーザー</th>
           <th>タイトル</th>
         </tr>
-        <% @germany.each do |a| %>
+        <% @feed_items.each do |f| %>
         <tr>
-          <td><%= link_to a.user.name, a.user %><br />
-            <%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
-          <td><%= link_to a.title, a %></td>
+          <td><%= link_to f.user.name, f.user %></td>
+          <td><%= link_to f.title, f %></td>
         </tr>
         <% end %>
-    </table>
+      </table>
+      <% else %>
+        <h4>気になるユーザーをフォローして記事をチェック！</h4>
+      <% end %>
+    </div>
   </div>
 
-  <div class="col-sm-12 col-lg-6">
-    <table class="table table-striped">
-      <h4 class="brand">プレミアリーグ</h4>
+  <div class="row">
+    <div class="col-sm-12 col-lg-6">
+      <table class="table table-striped">
+        <h4 class="brand">ブンデスリーガ</h4>
+          <tr>
+            <th>ユーザー</th>
+            <th>タイトル</th>
+          </tr>
+          <% @germany.each do |a| %>
+          <tr>
+            <td><%= link_to a.user.name, a.user %></td>
+            <td><%= link_to a.title, a %></td>
+          </tr>
+          <% end %>
+      </table>
+    </div>
+
+    <div class="col-sm-12 col-lg-6">
+      <table class="table table-striped">
+        <h4 class="brand">プレミアリーグ</h4>
         <tr>
           <th>ユーザー</th>
           <th>タイトル</th>
         </tr>
         <% @england.each do |a| %>
         <tr>
-          <td><%= link_to a.user.name, a.user %><br />
-            <%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
+          <td><%= link_to a.user.name, a.user %></td>
           <td><%= link_to a.title, a %></td>
         </tr>
         <% end %>
-    </table>
+      </table>
+    </div>
   </div>
-</div>
 
 <div class="row">
   <div class="col-sm-12 col-lg-6">
@@ -118,8 +122,7 @@
         </tr>
         <% @spain.each do |a| %>
         <tr>
-          <td><%= link_to a.user.name, a.user %><br />
-            <%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
+          <td><%= link_to a.user.name, a.user %></td>
           <td><%= link_to a.title, a %></td>
         </tr>
         <% end %>
@@ -135,8 +138,7 @@
         </tr>
         <% @italy.each do |a| %>
         <tr>
-          <td><%= link_to a.user.name, a.user %><br />
-            <%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
+          <td><%= link_to a.user.name, a.user %></td>
           <td><%= link_to a.title, a %></td>
         </tr>
         <% end %>
@@ -154,8 +156,7 @@
         </tr>
         <% @japan.each do |a| %>
         <tr>
-          <td><%= link_to a.user.name, a.user %><br />
-            <%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
+          <td><%= link_to a.user.name, a.user %></td>
           <td><%= link_to a.title, a %></td>
         </tr>
         <% end %>
@@ -171,51 +172,17 @@
         </tr>
         <% @national.each do |a| %>
         <tr>
-          <td><%= link_to a.user.name, a.user %><br />
-            <%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
+          <td><%= link_to a.user.name, a.user %></td>
           <td><%= link_to a.title, a %></td>
         </tr>
         <% end %>
     </table>
   </div>
 </div>
-</div>
+
+<!-- ここまで中央 -->
 <!--　ここからサイド -->
-<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-  
-  <a href="http://soccerlture.com" target="_blank" /><%= image_tag 'soccerlture_banner.png' %></a>
-
-<table class="table table-striped">
-  <h4 class="brand">人気記事 Popular Articles</h4>
-  <tr>
-    <th>ユーザー</th>
-    <th>タイトル</th>
-  </tr>
-  <% @rankings.each do |a| %>
-  <tr>
-    <td>
-      <%= link_to a.user.name, a.user %><br />
-      <%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
-    <td><%= link_to a.title, a %></td>
-  </tr>
-  <% end %>
-</table>
-<table class="table table-striped">
-  <h4 class="brand">最新記事 New Articles</h4>
-  <tr>
-    <th>ユーザー</th>
-    <th>タイトル</th>
-  </tr>
-  <% @latestarticles.each do |a| %>
-  <tr>
-    <td><%= link_to a.user.name, a.user %><br />
-      <%= image_tag(a.user.avatar_url, width: 75, height: 75, class: 'img-rounded') if a.user.avatar? %></td>
-    <td><%= link_to a.title, a %></td>
-  </tr>
-  <% end %>
-</table>
 
   
-
-</div>  
+  
 <!-- /ここまでサイド -->
