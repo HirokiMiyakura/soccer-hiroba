@@ -1,14 +1,16 @@
 <h4 class="title">プロフィールページ</h4>
-
-    <section>
-      <h4 class="brand">基本情報</h4>
+  <div class="row">
+    <div class="col-xs-6 col-sm-6">
       <% if @user.avatar? %>
-      <p>アバター画像</p>
-      <%= image_tag(@user.avatar_url) if @user.avatar? %>
+      <h4>アバター画像</h4>
+      <%= image_tag(@user.avatar_url, width: 170, height: 170, class: 'profile-image') if @user.avatar? %>
       <hr>
       <% else %>
-      <p>アバター画像がまだ設定されていません</p>
+      <%= image_tag 'no-image.png', width: 170, height: 170, class: 'profile-image' %>
       <% end %>
+    </div>
+    <div class="col-xs-6 col-sm-6">
+      <h4 class="mb20">基本情報</h4>
       <table class="table table-bordered profile">
         <tr>
           <td>お名前</td>
@@ -37,30 +39,30 @@
           <td><%= @user.reputation_for(:votes).to_i %></td>
         </tr>
       </table>
-    </section>
-    <!--<section>
-      <%= render 'shared/stats' %>
-    </section>-->
+      <!--<%= render 'shared/stats' %>-->
+    </div>
+  </div>
 
-    <%= render 'follow_form' if signed_in? %>
-    <% if @user.articles.any? %>
-      <h3>Articles (<%= @user.articles.count %>)</h3>
-        <!--<%= render @articles %>-->
+  <div class="row">
+    <div class="col-xs-12">
+      <%= render 'follow_form' if signed_in? %>
+      <% if @user.articles.any? %>
+        <h4><%= @user.name %>　さんの記事 (<%= @user.articles.count %>)</h4>
         <table class="table table-striped">
           <tr>
             <th>トピック</th>
             <th>タイトル</th>
-            <th>詳細</th>
           </tr>
           <% @articles.each do |a| %>
           <tr>
             <td><%= a.topic %></td>
-            <td><%= a.title %></td>
-            <td><%= link_to '本文へ', a %></td>
+            <td><%= link_to a.title, a %></td>
           </tr>
           <% end %>
         </table>
       <%= will_paginate @articles %>
-    <% else %>
-      <h3>まだ投稿がありません。</h3>
-    <% end %>
+      <% else %>
+        <h3>まだ投稿がありません。</h3>
+      <% end %>
+    </div>
+  </div>

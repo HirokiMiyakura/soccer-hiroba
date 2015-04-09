@@ -17,7 +17,7 @@
 
 <p>
   <strong>本文：</strong>
-  <%= @article.body %>
+  <%= simple_format(@article.body) %>
 </p>
 
 <hr>
@@ -34,11 +34,10 @@
 
 <hr>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<% if signed_in? %>
-  <% if @article.id == @user.id %>
+
+<% if signed_in? && @article.id == @user.id %>
+  <%= link_to 'Edit', edit_article_path(@article) %> |
   <%= link_to 'Destroy', (@article), method: :delete, data: { confirm: 'Are you sure?' } %> |
-  <% end %>
 <% end %>
 <%= link_to 'Back', articles_path %>
 
