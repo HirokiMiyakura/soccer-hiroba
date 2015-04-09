@@ -1,6 +1,11 @@
 <li>
-  <%= image_tag user.avatar %>
+  <% if user.avatar? %>
+  <%= image_tag user.avatar, width: 70, height: 70 %>
+  <% else %>
+  <%= image_tag 'no-image.png', width: 70, height: 70 %>
+  <% end %>
   <%= link_to user.name, user %>
+  (<%= user.articles.count %>)
   <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
   <% end %>

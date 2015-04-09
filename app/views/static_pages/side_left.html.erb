@@ -3,9 +3,9 @@
       <% if signed_in? %>
         <div class="profile">
           <h4 class="brand">ようこそ <%= current_user.name %>さん</h4>
-        <% if @user.avatar %>
+        <% if current_user.avatar? %>
           <%= image_tag(current_user.avatar, width: 170, height: 170, class: 'profile-image') %>
-        <% else %>
+        <% elsif %>
           <%= image_tag 'no-image.png', width: 150, height: 150, class: 'profile-image' %>
         <% end %>
       

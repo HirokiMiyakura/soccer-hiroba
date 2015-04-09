@@ -7,16 +7,10 @@ class UsersController < ApplicationController
     @users = User.paginate(page: params[:page])
 
     @latestarticles = Article.all.order(created_at: :desc).limit(5)
-    @germany = Article.where(topic: 'ブンデスリーガ').limit(2)
-    @england = Article.where(topic: 'プレミアリーグ').limit(2)
-    @spain = Article.where(topic: 'リーガエスパニョル').limit(2)
-    @italy = Article.where(topic: 'セリエA').limit(2)
-    @japan = Article.where(topic: 'Jリーグ').limit(2)
-    @national = Article.where(topic: '日本代表').limit(2)
+    @rankings = Article.popular.limit(5)
 
     @user = current_user
 
-    @rankings = Article.popular.limit(5)
   end
 
   def show
@@ -24,28 +18,14 @@ class UsersController < ApplicationController
     @articles = @user.articles.paginate(page: params[:page])
 
     @latestarticles = Article.all.order(created_at: :desc).limit(5)
-    @germany = Article.where(topic: 'ブンデスリーガ').limit(2)
-    @england = Article.where(topic: 'プレミアリーグ').limit(2)
-    @spain = Article.where(topic: 'リーガエスパニョル').limit(2)
-    @italy = Article.where(topic: 'セリエA').limit(2)
-    @japan = Article.where(topic: 'Jリーグ').limit(2)
-    @national = Article.where(topic: '日本代表').limit(2)
-
     @rankings = Article.popular.limit(5)
+
   end
 
   def new
     @user = User.new
 
     @latestarticles = Article.all.order(created_at: :desc).limit(5)
-    @germany = Article.where(topic: 'ブンデスリーガ').limit(2)
-    @england = Article.where(topic: 'プレミアリーグ').limit(2)
-    @spain = Article.where(topic: 'リーガエスパニョル').limit(2)
-    @italy = Article.where(topic: 'セリエA').limit(2)
-    @japan = Article.where(topic: 'Jリーグ').limit(2)
-    @national = Article.where(topic: '日本代表').limit(2)
-
-
     @rankings = Article.popular.limit(5)
 
     if signed_in?
@@ -67,16 +47,9 @@ class UsersController < ApplicationController
   def edit
 
     @latestarticles = Article.all.order(created_at: :desc).limit(5)
-    @germany = Article.where(topic: 'ブンデスリーガ').limit(2)
-    @england = Article.where(topic: 'プレミアリーグ').limit(2)
-    @spain = Article.where(topic: 'リーガエスパニョル').limit(2)
-    @italy = Article.where(topic: 'セリエA').limit(2)
-    @japan = Article.where(topic: 'Jリーグ').limit(2)
-    @national = Article.where(topic: '日本代表').limit(2)
+    @rankings = Article.popular.limit(5)
 
     @user = current_user
-
-    @rankings = Article.popular.limit(5)
     
   end
 
@@ -90,13 +63,6 @@ class UsersController < ApplicationController
     end
 
     @latestarticles = Article.all.order(created_at: :desc).limit(5)
-    @germany = Article.where(topic: 'ブンデスリーガ').limit(2)
-    @england = Article.where(topic: 'プレミアリーグ').limit(2)
-    @spain = Article.where(topic: 'リーガエスパニョル').limit(2)
-    @italy = Article.where(topic: 'セリエA').limit(2)
-    @japan = Article.where(topic: 'Jリーグ').limit(2)
-    @national = Article.where(topic: '日本代表').limit(2)
-
     @rankings = Article.popular.limit(5)
 
     if signed_in?
@@ -111,21 +77,14 @@ class UsersController < ApplicationController
   end
 
   def following
+    @latestarticles = Article.all.order(created_at: :desc).limit(5)
+    @rankings = Article.popular.limit(5)
+
     @title = "Following"
     @user = User.find(params[:id])
     @users = @user.followed_users.paginate(page: params[:page])
     render 'show_follow'
 
-    @latestarticles = Article.all.order(created_at: :desc).limit(5)
-    @germany = Article.where(topic: 'ブンデスリーガ').limit(2)
-    @england = Article.where(topic: 'プレミアリーグ').limit(2)
-    @spain = Article.where(topic: 'リーガエスパニョル').limit(2)
-    @italy = Article.where(topic: 'セリエA').limit(2)
-    @japan = Article.where(topic: 'Jリーグ').limit(2)
-    @national = Article.where(topic: '日本代表').limit(2)
-
-
-    @rankings = Article.popular.limit(5)
 
     if signed_in?
       @feed_items = current_user.feed.paginate(page: params[:page], per_page: 5)
@@ -133,21 +92,13 @@ class UsersController < ApplicationController
   end
 
   def followers
+    @latestarticles = Article.all.order(created_at: :desc).limit(5)
+    @rankings = Article.popular.limit(5)
+    
     @title = "Followers"
     @user = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:id])
     render 'show_follow'
-
-    @latestarticles = Article.all.order(created_at: :desc).limit(5)
-    @germany = Article.where(topic: 'ブンデスリーガ').limit(2)
-    @england = Article.where(topic: 'プレミアリーグ').limit(2)
-    @spain = Article.where(topic: 'リーガエスパニョル').limit(2)
-    @italy = Article.where(topic: 'セリエA').limit(2)
-    @japan = Article.where(topic: 'Jリーグ').limit(2)
-    @national = Article.where(topic: '日本代表').limit(2)
-
-
-    @rankings = Article.popular.limit(5)
 
     if signed_in?
       @feed_items = current_user.feed.paginate(page: params[:page], per_page: 5)
@@ -158,7 +109,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                      :password_confirmation, :avatar, :avatar_cache)
+                      :password_confirmation, :avatar, :avatar_cache, :remove_avatar)
     end
 
     def correct_user

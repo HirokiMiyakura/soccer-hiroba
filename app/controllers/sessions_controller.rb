@@ -19,6 +19,10 @@ class SessionsController < ApplicationController
 
   def create
   	user = User.find_by(email: params[:session][:email].downcase)
+
+    @latestarticles = Article.all.order(created_at: :desc).limit(5)
+    @rankings = Article.popular.limit(5)
+    
   	if user && user.authenticate(params[:session][:password])
   	  sign_in user
   	  redirect_back_or user
@@ -26,16 +30,6 @@ class SessionsController < ApplicationController
   	  flash.now[:error] = 'メールアドレスもしくはパスワードが間違っているようです。'
   	  render 'new'
   	end
-
-    @latestarticles = Article.all.order(created_at: :desc).limit(5)
-    @germany = Article.where(topic: 'ブンデスリーガ').limit(2)
-    @england = Article.where(topic: 'プレミアリーグ').limit(2)
-    @spain = Article.where(topic: 'リーガエスパニョル').limit(2)
-    @italy = Article.where(topic: 'セリエA').limit(2)
-    @japan = Article.where(topic: 'Jリーグ').limit(2)
-    @national = Article.where(topic: '日本代表').limit(2)
-
-    @rankings = Article.popular.limit(5)
 
     if signed_in?
       @feed_items = current_user.feed.paginate(page: params[:page], per_page: 5)
@@ -45,17 +39,10 @@ class SessionsController < ApplicationController
   def destroy
   	sign_out
   	redirect_to root_path
-
-    @latestarticles = Article.all.order(created_at: :desc).limit(5)
-    @germany = Article.where(topic: 'ブンデスリーガ').limit(2)
-    @england = Article.where(topic: 'プレミアリーグ').limit(2)
-    @spain = Article.where(topic: 'リーガエスパニョル').limit(2)
-    @italy = Article.where(topic: 'セリエA').limit(2)
-    @japan = Article.where(topic: 'Jリーグ').limit(2)
-    @national = Article.where(topic: '日本代表').limit(2)
-
+    flash[:success] = "ログアウトしました。"
     @user = current_user
 
+    @latestarticles = Article.all.order(created_at: :desc).limit(5)
     @rankings = Article.popular.limit(5)
 
     if signed_in?

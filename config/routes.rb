@@ -8,10 +8,12 @@ Rails.application.routes.draw do
   	  get :following, :followers
   	end
   end
+
   resources :sessions, only: [ :new, :create, :destroy ]
   resources :articles do
     member { post :vote }
   end
+  
   resources :comments
   resources :relationships, only: [ :create, :destroy ]
   root 'static_pages#home'
