@@ -6979,9 +6979,17 @@ button.close {
 }
 
 @media (max-device-width: 480px) {
-  h4.brand {
-    font-size: 1em!important;
+  h4.brand,
+  h4.title {
+    font-size: 1.2em!important;
+    font-weight: bold!important;
   }
+  table.table-striped th,
+  table.table-striped td {
+  font-size: 1em!important;
+}
+
+
 }
 
 
