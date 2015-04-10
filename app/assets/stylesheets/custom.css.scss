@@ -6984,12 +6984,11 @@ button.close {
     margin-bottom: 10px!important;
   }
   ul.nav.pull-right {
-    background-color: none!important;
+    background-color: #fff!important;
   }
   .navbar .nav > li > a {
     font-size: 0.8em!important;
     font-weight: normal!important;
-    padding: 4px 2px;
     border-right: 1px solid #444!important;
     color: #444!important;
   }
@@ -6999,7 +6998,7 @@ button.close {
     padding: 5px!important;
     font-weight: bold!important;
     margin-top: 30px!important;
-    border-bottom: none!important;
+    border: none!important;
   }
   h4.title {
     color: #444;
