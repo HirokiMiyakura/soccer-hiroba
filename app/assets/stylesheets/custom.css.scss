@@ -6980,23 +6980,28 @@ button.close {
 
 @media (max-width: 520px) {
   #logo {
-    font-size: 3.5em!important;
+    font-size: 2.5em!important;
   }
   .navbar .nav > li > a {
-    font-size: 1.7em!important;
+    font-size: 1.2em!important;
     font-weight: normal!important;
     padding: 10px 5px;
   }
   h4.brand,
   h4.title {
-    font-size: 2em!important;
-    padding: 10px!important;
+    font-size: 1.5em!important;
+    padding: 15px 5px!important;
     font-weight: bold!important;
     margin-top: 30px!important;
   }
+  h4.title {
+    color: #5bb65b;
+    border: none!important;
+    background-color: none!important;
+  }
   table.table-striped th,
   table.table-striped td {
-  font-size: 1.2em!important;
+  font-size: 1em!important;
 }
 
 
