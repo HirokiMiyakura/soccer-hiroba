@@ -99,7 +99,7 @@ ul.nav.pull-right {
 }
 
 .navbar .nav > li > a {
-  font-size: 0.8em!important;
+  font-size: 1em!important;
   color: #fff!important;
 }
 
@@ -6975,6 +6975,12 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important;
+  }
+}
+
+@media (max-device-width: 480px) {
+  h4.brand {
+    font-size: 1em!important;
   }
 }
 
