@@ -82,7 +82,7 @@ p {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: #fff;
+  color: #5bb65b;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
@@ -94,6 +94,10 @@ p {
   }
 }
 
+ul.nav.pull-right {
+  background-color: #5bb65b!important;
+}
+
 .navbar .nav > li > a {
   font-size: 0.8em!important;
   color: #fff!important;
@@ -103,7 +107,7 @@ p {
   background-image: none!important;
   border: none!important;
   padding: 7px 0 7px 0!important;
-  background-color: #fff;
+  background-color: #fff!important;
 }
 
 .navbar-inverse .brand, .navbar-inverse .nav > li > a {
@@ -117,10 +121,6 @@ div.navbar-inner {
 
 /* left */
 
-.profile {
-  background-color: #f9f9f9;
-}
-
 img.profile-image {
   margin: 10px 20%;
 }
@@ -130,7 +130,7 @@ h4.brand {
   background-color: #eee;
   color: #555;
   font-weight: normal;
-  border-top:4px solid #5bb65b;
+  border-bottom:4px solid #5bb65b;
   font-size: 0.9em;
 }
 
