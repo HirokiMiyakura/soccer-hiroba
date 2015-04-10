@@ -6980,20 +6980,22 @@ button.close {
 
 @media (max-device-width: 480px) {
   #logo {
-    font-size: 2.5em!important;
+    font-size: 3.5em!important;
   }
   .navbar .nav > li > a {
-    font-size: 2em!important;
+    font-size: 2.7em!important;
     font-weight: normal!important;
   }
   h4.brand,
   h4.title {
-    font-size: 2em!important;
+    font-size: 3em!important;
+    padding: 10px!important;
     font-weight: bold!important;
+    margin-top: 30px!impotant;
   }
   table.table-striped th,
   table.table-striped td {
-  font-size: 1.8em!important;
+  font-size: 2.2em!important;
 }
 
 
