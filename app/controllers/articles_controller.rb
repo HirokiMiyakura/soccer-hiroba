@@ -76,8 +76,8 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = current_user.articles.find_by(params[:id])
-    @article.destroy
+    Article.find(params[:id]).destroy
+    flash[:success] = "投稿が削除されました"
     redirect_to root_url
   end
 
