@@ -95,12 +95,13 @@ p {
 }
 
 ul.nav.pull-right {
-  background-color: #5bb65b!important;
+  background-color: none!important;
 }
 
 .navbar .nav > li > a {
   font-size: 1em!important;
-  color: #fff!important;
+  color: #555!important;
+  text-shadow: none!important;
 }
 
 .navbar-inverse .navbar-inner {
@@ -136,10 +137,10 @@ h4.brand {
 
 h4.title {
   padding:10px;
-  background-color: #000;
-  color: #fff;
+  background-color: #eaeaea;
+  color: #555;
   font-weight: normal;
-  border-top:4px solid #5bb65b;
+  border-bottom:4px solid #5bb65b;
   font-size: 0.9em;
   margin-bottom: 35px;
 }
