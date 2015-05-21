@@ -34,6 +34,10 @@ class UsersController < ApplicationController
   end
 
   def create
+
+    @latestarticles = Article.all.order(created_at: :desc).limit(5)
+    @rankings = Article.popular.limit(5)
+
     @user = User.new(user_params)
     if @user.save
       sign_in @user
