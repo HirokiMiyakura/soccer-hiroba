@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
             uniqueness: { case_sensitive: false }
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, :presence: true
+  validates :password_confirmation, :presence: true
 
   has_many :evaluations, class_name: "ReputationSystem::Evaluation", as: :source
   has_many :articles, dependent: :destroy

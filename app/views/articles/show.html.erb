@@ -36,10 +36,10 @@
 
 
 <% if signed_in? && @article.user_id == @user.id %>
-  <%= link_to 'Edit', edit_article_path(@article) %> |
-  <%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' } %> |
+  <%= link_to '編集', edit_article_path(@article) %> |
+  <%= link_to '削除', @article, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <% end %>
-<%= link_to 'Back', articles_path %>
+<%= link_to '戻る', articles_path %>
 
 <hr>
 
