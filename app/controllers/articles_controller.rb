@@ -37,7 +37,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @latestarticles = Article.all.order(created_at: :desc).limit(5)
+    @latestarticles = Article.all.order(created_at: :asc).limit(5)
     @rankings = Article.popular.limit(5)
 
     @user = current_user
