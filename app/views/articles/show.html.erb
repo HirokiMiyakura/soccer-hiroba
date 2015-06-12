@@ -9,6 +9,10 @@
   <strong>タイトル：</strong>
   <%= @article.title %>
 </p>
+<p>
+  <strong>投稿日時：</strong>
+  <%= @article.created_at %>
+</p>
 
 <p>
   <strong>トピック：</strong>
@@ -43,6 +47,32 @@
 
 <hr>
 
+
+<% if @comments.any? %>
+
+<h3 class="brand">コメント一覧</h3>
+
+<hr>
+
+<table class="table table-striped">
+  <tr>
+    <th>ユーザー</th>
+    <th>コメント</th>
+    <th>投稿日時</th>
+  </tr>
+  <% @comments.each do |c| %>
+  <tr>
+    <td><%= link_to c.user.name, c.user %></td>
+    <td><%= c.body %></td>
+    <td><%= c.created_at %></td>
+  </tr>
+  <% end %>
+</table>
+<% end %>
+
+
+
+
 <% if signed_in? %>
 <div class="row">
   <div class="col-lg-10 col-lg-offset-1">
@@ -75,22 +105,10 @@
 
 <hr>
 
-<% if @comments.any? %>
 
-<h3 class="brand">コメント一覧</h3>
 
-<hr>
 
-<table class="table table-striped">
-  <tr>
-    <th>ユーザー</th>
-    <th>コメント</th>
-  </tr>
-  <% @comments.each do |c| %>
-  <tr>
-    <td><%= link_to c.user.name, c.user %></td>
-    <td><%= c.body %></td>
-  </tr>
-  <% end %>
-</table>
-<% end %>
+
+
+
+
