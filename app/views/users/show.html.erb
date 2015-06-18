@@ -3,7 +3,7 @@
     <div class="col-xs-6 col-sm-6">
       <% if @user.avatar? %>
       <h4>アバター画像</h4>
-      <%= image_tag(@user.avatar_url, width: 170, height: 170, class: 'profile-image') if @user.avatar? %>
+      <%= image_tag(@user.avatar, width: 170, height: 170, class: 'profile-image') if @user.avatar? %>
       <hr>
       <% else %>
       <%= image_tag 'no-image.png', width: 170, height: 170, class: 'profile-image' %>
