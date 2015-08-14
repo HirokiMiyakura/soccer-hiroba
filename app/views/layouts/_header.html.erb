@@ -5,6 +5,7 @@
       <nav>
         <ul class="nav pull-right">
           <li><%= link_to "ホーム", root_path %></li>
+          <li><%= link_to '記事を投稿する', new_article_path %></li>
           <li><%= link_to "ヘルプ", help_path %></li>
         <% if signed_in? %>
           <li><%= link_to "ユーザー一覧", users_path %></li>
