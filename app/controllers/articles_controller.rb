@@ -37,6 +37,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    @articles = Article.all
     @latestarticles = Article.all.order(created_at: :asc).limit(5)
     @rankings = Article.popular.limit(5)
 
